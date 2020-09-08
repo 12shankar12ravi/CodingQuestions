@@ -19,9 +19,10 @@ public class MatrixInDiagonalPattern {
                 }
             }
             System.out.println();
+
         }
     }
-
+    
 
 
 }
