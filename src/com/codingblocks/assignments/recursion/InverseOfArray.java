@@ -3,7 +3,7 @@ package com.codingblocks.assignments.recursion;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class ReverseArrayByRecursion {
+public class InverseOfArray {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         int n  = scn.nextInt();
@@ -11,16 +11,15 @@ public class ReverseArrayByRecursion {
         for (int i = 0; i < n; i++) {
             arr[i] = scn.nextInt();
         }
-        reverseArray(arr,0,n-1);
-        System.out.println(Arrays.toString(arr));
+        int[] invArr = new int[n];
+        findInverseArray(arr,0,invArr);
+        System.out.println(Arrays.toString(invArr));
     }
 
-    private static void reverseArray(int[] arr , int l , int h) {
-        if(l>h)
+    private static void findInverseArray(int[] arr, int i, int[] invArr) {
+        if(i==arr.length)
             return;
-        int temp = arr[l];
-        arr[l] = arr[h];
-        arr[h] = temp;
-        reverseArray(arr,l+1,h-1);
+        invArr[arr[i]] = i;
+        findInverseArray(arr,i+1,invArr);
     }
 }
