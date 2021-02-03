@@ -1,4 +1,4 @@
-package com.lecture.questions.Sept23Monu;
+package com.lecture.questions.Sept23BitMasking;
 
 import java.util.Scanner;
 

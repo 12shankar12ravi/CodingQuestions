@@ -1,17 +1,14 @@
 package com.lecture.questions.Sept29;
 
-import java.util.Arrays;
-
 /**
  * This is the internal implementation of the real life
  * Queue , Where elements are dequeue from the queue in
  * First in First out order. And it takes O(1) time to dequeue element from the
- * One Disadvantage of this queue is that it just increases the space it is not
- * really removing the element from the queue when we dequeue the element.
+ * queue and it conserves space also.
  * Queue
  * @param <E>
  */
-public class OptimizedQueue<E> {
+public class CircularOptimizedQueue<E> {
 
     /*
       Internal array to store the elements in the Queue
@@ -21,19 +18,25 @@ public class OptimizedQueue<E> {
     /*
       Rear index to enqueue and dequeue elements from the queue
      */
-    private int rear = 0;
+    private int rear;
 
     /*
       front index kept to deque the elements easily from the queue
      */
-    private int front = 0;
+    private int front;
+
+    private int size;
 
     /**
      * Create a Queue object with the
      * internal default storage of size 10
      */
-    public OptimizedQueue(){
+    public CircularOptimizedQueue(){
+
         this.data = new Object[10];
+        this.size = 0;
+        this.front= 0;
+        this.rear = 0;
     }
 
     /**
@@ -41,7 +44,7 @@ public class OptimizedQueue<E> {
      * @return
      */
     private boolean isFull(){
-        return rear == data.length;
+        return size == data.length;
     }
 
     /**
@@ -53,6 +56,8 @@ public class OptimizedQueue<E> {
             throw new QueueException("Queue is full , can't enqueue more elements , Please dequeue elements first");
         }
         data[rear++] = element;
+        rear = rear % data.length;
+        size++;
     }
 
     /**
@@ -60,7 +65,7 @@ public class OptimizedQueue<E> {
      * @return
      */
     private boolean isEmpty(){
-        return front == rear;
+        return size == 0;
     }
 
     /**
@@ -72,16 +77,16 @@ public class OptimizedQueue<E> {
             throw new QueueException("Queue is empty,Please enqueue the elements");
         }
 
+        front = front % data.length;
+        size--;
         return (E) data[front++];
     }
 
-    @Override
-    public String toString(){
-        String str = "[";
-        for (int i = front; i < rear ; i++) {
-            str+= data[i]+",";
+    public void display(){
+        System.out.println("-------start-------");
+        for(int i=0;i<size;i++){
+            System.out.println(data[(front+i) % data.length]);
         }
-        str+= "]";
-        return str;
+        System.out.println("-------end---------");
     }
 }

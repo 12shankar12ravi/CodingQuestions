@@ -1,6 +1,6 @@
 package com.lecture.questions.Oct1;
 
-public class BitMasking {
+public class BitMaskingRevision {
     public static void main(String[] args) {
         int x = -100;
         //System.out.println(Integer.toBinaryString(x));

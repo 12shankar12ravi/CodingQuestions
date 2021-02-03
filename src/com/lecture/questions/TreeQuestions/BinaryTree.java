@@ -1,4 +1,4 @@
-package com.lecture.questions.Oct11;
+package com.lecture.questions.TreeQuestions;
 
 import java.util.LinkedList;
 import java.util.Queue;

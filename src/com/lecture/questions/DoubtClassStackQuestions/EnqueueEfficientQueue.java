@@ -1,7 +1,6 @@
 package com.lecture.questions.DoubtClassStackQuestions;
 
 
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -12,25 +11,34 @@ import java.util.Stack;
  *  Note : The enque and deque operations should be done on primary queue , secondary can be used for intermediate states.
  *
  */
-public class QueueByUsingTwoStacks {
+public class EnqueueEfficientQueue {
+
+    private Stack primary ;
+    private Stack secondary ;
+
+    EnqueueEfficientQueue(){
+        this.primary = new Stack();
+        this.secondary = new Stack();
+    }
 
     public static void main(String[] args) {
-        Stack primary = new Stack();
-        Stack secondary = new Stack();
+        // Enqueue efficient queue
+        EnqueueEfficientQueue queue = new EnqueueEfficientQueue();
+
         for (int i = 1; i <= 10 ; i++) {
-            enqueue(i*2,primary);
+            queue.enqueue(i*2);
         }
-        System.out.println(primary);
-        System.out.println(dequeue(primary,secondary));
+        System.out.println(queue);
+        System.out.println(queue.dequeue());
     }
 
     // Enqueue efficient queue (enqueue method)
-    public static void enqueue(int value,Stack primary){
+    public void enqueue(int value){
         primary.push(value);
     }
 
     // Enqueue efficient queue (dequeue method)
-    public static int dequeue(Stack primary,Stack secondary){
+    public int dequeue(){
         while(primary.size()>1){
             secondary.push(primary.pop());
         }
@@ -39,6 +47,11 @@ public class QueueByUsingTwoStacks {
             primary.push(secondary.pop());
         }
         return value;
+    }
+
+    @Override
+    public String toString(){
+        return primary.toString();
     }
 
 }

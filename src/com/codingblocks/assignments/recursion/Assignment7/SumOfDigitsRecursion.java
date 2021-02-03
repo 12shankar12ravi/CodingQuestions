@@ -1,4 +1,4 @@
-package com.codingblocks.assignments.recursion;
+package com.codingblocks.assignments.recursion.Assignment7;
 
 
 import java.util.Scanner;
